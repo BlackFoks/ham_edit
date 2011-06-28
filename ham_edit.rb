@@ -29,58 +29,49 @@ class TopicFile
     end
   end
   
-  def move_header!
+  # def move_header!(header_node_text='ueNTP HA4UC/|EHUU')
+  def process_header!(header_node_text='ueNTP HA4UC/|EHUU')
+    # header_node_text='ueNTP HA4UC/|EHUU'
+    
     # getting header text
     header_text = self.body_header.text
     
     # create para header
     if !self.para_header?
-      # header and paras
+      # getting header and paras
       body_childs = self.doc.xpath('//body').first.children
-      #puts body_childs.count
       
-      # change header text
+      # getting header
       h = body_childs.xpath('//header').first
-      #h.unlink
-      h_para = h.xpath('//para').first
-      h_para_content = h_para.content
-      h_para.content = "ueNTP HA4UC/|EHUU"
       
+      # getting header's para
+      h_para = h.xpath('//para').first
+      
+      # store page header text
+      h_para_content = h_para.content
+      
+      # replace header's para text
+      h_para.content = header_node_text
+      
+      # creating new para for header
       para_header_node = Nokogiri::XML::Node.new('para', self.doc)
       para_header_node['styleclass'] = 'Style_Header2'
 
+      # creating para's text note with page header text 
       para_header_text_node = Nokogiri::XML::Node.new('text', self.doc)
       para_header_text_node['styleclass'] = 'Style_Header2'
       para_header_text_node['translate'] = 'true'
-      para_header_text_node.content = "BBEDITE HA3BAHIE CTPAHIu,bI"
+      para_header_text_node.content = h_para_content
       
+      # add para's text into para node
       para_header_node.add_child(para_header_text_node)
       
-      h.after(para_header_node)
+      # insert para_header immedeatly after <header> node
+      h.after(para_header_node)      
       
-      
-      # puts h.inspect
-      # puts h_para.to_xml
       puts doc.to_xml
-      
-      # get again
-      body_childs = self.doc.xpath('//body').first.children
-      # puts body_childs.count
-      
-      #puts h.to_s
-      #puts body_childs.to_s
-
-      #body_childs.each {|x| x.unlink }
-      #puts body_childs.count
-      
-      # remove header node
-      #header_node = body_childs.shift      
-      #puts body_childs.count
-      
-      #body_childs.each {|x| self.doc.xpath('//body').first << x if x != header_node }
-      
-    end
-    
+      # body_childs = self.doc.xpath('//body').first.children      
+    end    
   end
 end
 
@@ -96,6 +87,11 @@ tf = TopicFile.new('D:\projects\ham_edit\xml\test.xml')
 
 #wputs "aaaaaaa" if tf.para_header?
 
-tf.move_header!
+# tf.move_header!
+tf.process_header!('Центр Начислений')
+
+File.open('D:\new_xml.xml', 'w') do |file|
+  file.write(tf.doc.to_xml)
+end
 
 #puts tf.doc.to_xml
