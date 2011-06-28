@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="tychkova" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Оглавление</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Оглавление</text></para>
+    </header>
+    <para styleclass="Hyperlink" style="margin-top:24px; margin-bottom:5px;"><text styleclass="Hyperlink" style="font-family:Arial; font-size:11pt; font-weight:bold; text-transform:uppercase;" translate="true">Состав ПО для развертывания комплекса продукта «Центр Начислений»</text></para>
+    <para styleclass="Hyperlink" style="margin-top:16px; margin-bottom:5px;"><text styleclass="Hyperlink" style="font-size:11pt; font-weight:bold;" translate="true">ПО, размещаемое на сервере БД</text></para>
+    <para styleclass="Hyperlink" style="margin-top:16px; margin-bottom:5px;"><text styleclass="Hyperlink" style="font-size:11pt; font-weight:bold;" translate="true">ПО, размещаемое на терминальном сервере</text></para>
+    <para styleclass="Hyperlink" style="margin-top:16px; margin-bottom:5px;"><text styleclass="Hyperlink" style="font-size:11pt; font-weight:bold;" translate="true"> ПО, размещаемое на клиентской машине</text></para>
+  </body>
+</topic>

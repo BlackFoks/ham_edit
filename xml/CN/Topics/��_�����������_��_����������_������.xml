@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="helpproject.xsl" ?>
+<topic template="Default" lasteditedby="tychkova" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="helpproject.xsd">
+  <title translate="true">ПО, размещаемое на клиентской машине</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">ПО, размещаемое на клиентской машине</text></para>
+    </header>
+    <list id="13" type="ol" listtype="decimal" formatstring="&#37;&#115;&#46;" format-charset="RUSSIAN_CHARSET" levelreset="true" legalstyle="false" startfrom="1" styleclass="Normal" style="font-family:&apos;Times New Roman&apos;; font-size:11pt; color:#000000;">
+      <li styleclass="Normal"><text styleclass="Normal" translate="true">Операционная система: Windows 2000/XP.</text></li>
+      <li styleclass="Normal"><text styleclass="Normal" translate="true">ПО для соединения с терминальным сервером: Windows Terminal Client 32/Remote Desktop Connection (RDC).</text></li>
+    </list>
+  </body>
+</topic>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="helpproject.xsl" ?>
+<topic template="Default" lasteditedby="tychkova" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="helpproject.xsd">
+  <title translate="true">ПО, размещаемое на сервере БД</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">ПО, размещаемое на сервере БД</text></para>
+    </header>
+    <list id="14" type="ol" listtype="decimal" formatstring="&#37;&#115;&#46;" format-charset="RUSSIAN_CHARSET" levelreset="false" legalstyle="false" startfrom="1" style="font-family:&apos;Times New Roman&apos;; font-size:11pt; color:#000000;">
+      <li><text styleclass="List Number" translate="true">Операционная система: Solaris, AIX, Windows 2003 Server.</text></li>
+      <li styleclass="List Number"><text styleclass="List Number" translate="true">СУБД: Oracle 10g Enterprise Edition.</text></li>
+      <li styleclass="List Number"><text styleclass="List Number" translate="true">Серверное ПО «ЦФТ ? Платформа Развития», версия технологического ядра: ТЯ 7.1.0.3.</text></li>
+      <li styleclass="List Number"><text styleclass="List Number" translate="true">Дистрибутив «Центр Начислений» (дамп с дистрибутивной схемы).</text></li>
+    </list>
+  </body>
+</topic>

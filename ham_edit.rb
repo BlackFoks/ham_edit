@@ -22,7 +22,7 @@ class TopicFile
     
     # create para header
     # if !self.para_header?
-    if !self.doc.xpath('//body/para').first
+    #if !self.doc.xpath('//body/para').first
       # getting header and paras
       body_childs = self.doc.xpath('//body').first.children
       
@@ -53,7 +53,7 @@ class TopicFile
       
       # insert para_header immedeatly after <header> node
       h.after(para_header_node)        
-    end    
+    #end    
   end
   
   def replace_styles!
@@ -84,7 +84,63 @@ class TopicFile
         node.children.each {|n| process_node(n, old_style, new_style) }
       end
     end
+  end  
+end
+
+class FileProcessor
+  def initialize(folder='.', is_batch=false)
+    @folder = folder
+    @is_batch = is_batch
   end
+  
+  def files
+    folders = []
+    
+    if @is_batch
+    end
+    
+    puts @folder
+    
+    Dir.chdir(@folder)
+    Dir.chdir('Topics')
+    
+    xmls = Dir.glob('*.xml')
+    
+    i = 1
+    xmls.each do |xml_filename|
+      puts xml_filename.encode('cp866')
+      
+      tf = TopicFile.new(xml_filename)
+      tf.process_header!('Центр Начислений')
+      
+      tf.styles << { :old => 'Body Text Indent',  :new => 'Text_Style' }
+      tf.styles << { :old => 'List Bullet',       :new => 'Style_Mark' }
+      tf.styles << { :old => 'List Bullet+',      :new => 'Style_BOLD' }
+      tf.styles << { :old => 'Hyperlink',         :new => 'Style_Link' }
+      tf.styles << { :old => 'Примечание',        :new => 'Note_First' }
+      tf.styles << { :old => 'annotation text',   :new => 'Style_Note' }
+      tf.styles << { :old => 'Body Text Indent+', :new => 'Style_Image' }
+      tf.styles << { :old => 'Код',               :new => 'Style_Example' }
+      
+      tf.replace_styles!
+      
+      #Dir.mkdir('_new') #if !Dir.directory?('_new')
+      File.open("#{i}.xml", 'w') do |file|
+        file.write(tf.doc.to_xml)
+      end
+      
+      i += 1      
+    end
+    
+    
+  end
+  
+  def process
+    
+    
+    
+  end
+  
   
 end
 
@@ -93,20 +149,32 @@ def wputs(str='')
 end
 
 # open topic file
-tf = TopicFile.new('D:\projects\ham_edit\xml\test.xml')
+# tf = TopicFile.new('D:\projects\ham_edit\xml\test1.xml')
 
 # moving header
-tf.process_header!('Центр Начислений')
+# tf.process_header!('Центр Начислений')
 
 # add style replacements
-tf.styles << { :old => 'List Number', :new => 'STYLE_001' }
-tf.styles << { :old => 'List Number 2', :new => 'STYLE_002' }
-tf.styles << { :old => 'Normal', :new => 'BUGAGA' }
+#tf.styles << { :old => 'List Number', :new => 'STYLE_001' }
+#tf.styles << { :old => 'List Number 2', :new => 'STYLE_002' }
+#tf.styles << { :old => 'Normal', :new => 'BUGAGA' }
+
+# tf.styles << { :old => 'Body Text Indent',  :new => 'Text_Style' }
+# tf.styles << { :old => 'List Bullet',       :new => 'Style_Mark' }
+# tf.styles << { :old => 'List Bullet+',      :new => 'Style_BOLD' }
+# tf.styles << { :old => 'Hyperlink',         :new => 'Style_Link' }
+# tf.styles << { :old => 'Примечание',        :new => 'Note_First' }
+# tf.styles << { :old => 'annotation text',   :new => 'Style_Note' }
+# tf.styles << { :old => 'Body Text Indent+', :new => 'Style_Image' }
+# tf.styles << { :old => 'Код',               :new => 'Style_Example' }
 
 # replace!
-tf.replace_styles!
+# tf.replace_styles!
 
 # save file
-File.open('D:\new_xml.xml', 'w') do |file|
-  file.write(tf.doc.to_xml)
-end
+# File.open('D:\new_xml.xml', 'w') do |file|
+  # file.write(tf.doc.to_xml)
+# end
+
+fp = FileProcessor.new('D:\projects\ham_edit\xml\CN')
+fp.files
