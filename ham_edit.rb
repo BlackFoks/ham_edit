@@ -15,28 +15,13 @@ class TopicFile
     @doc || @doc = Nokogiri::XML(open(@filename))
   end
   
-  def body_header
-    self.doc.xpath('//body/header/para').first
-  end
-  
-  def para_header
-    self.doc.xpath('//body/para').first
-  end
-  
-  def para_header?
-    if self.para_header
-      true
-    else
-      false
-    end
-  end
-  
   def process_header!(header_node_text='ueNTP HA4UC/|EHUU')    
     # getting header text
-    header_text = self.body_header.text
+    header_text = self.doc.xpath('//body/header/para').first.text
     
     # create para header
-    if !self.para_header?
+    # if !self.para_header?
+    if !self.doc.xpath('//body/para').first
       # getting header and paras
       body_childs = self.doc.xpath('//body').first.children
       
@@ -115,6 +100,7 @@ tf.process_header!('Центр Начислений')
 # add style replacements
 tf.styles << { :old => 'List Number', :new => 'STYLE_001' }
 tf.styles << { :old => 'List Number 2', :new => 'STYLE_002' }
+tf.styles << { :old => 'Normal', :new => 'BUGAGA' }
 
 # replace!
 tf.replace_styles!
