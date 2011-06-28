@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<helpproject xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="helpproject.xsd" version="1.5" isskin="false" isrepository="false">
+  <config>
+    <namespaces/>
+    <helpwindows>
+      <helpwindow name="Main" left="-1" top="-1" width="-1" height="-1">
+        <caption translate="true">&lt;%TITLE%&gt;</caption>
+        <window-options-hlp autosize="true" maximize="false" posabsolute="false" keepontop="false" buttons="0" headercolor="#F0F0F0" textcolor="#FFFFFF"/>
+        <window-options-chm navigation="true" navigationwidth="200" search="true" favorite="true" saveregistry="true" buttons="12366">
+          <user-button name="jump1">
+            <caption translate="true">jump1</caption>
+          </user-button>
+          <user-button name="jump2">
+            <caption translate="true">jump2</caption>
+          </user-button>
+        </window-options-chm>
+      </helpwindow>
+    </helpwindows>
+    <styleclasses>
+      <styleclass name="Normal" shortcut="49230">
+        <style-set media="screen" type="para">text-align:justify; text-indent:0px; margin-top:10px; margin-bottom:2px; line-height:1.0; </style-set>
+        <style-set media="screen" type="text">font-family:Calibri; font-size:11pt; color:#333333; </style-set>
+      </styleclass>
+      <styleclass name="Code Example" parentclass="Normal" shortcut="49227">
+        <style-set media="screen" type="para">margin-top:0px; margin-bottom:0px; white-space:nowrap; page-break-inside:avoid; </style-set>
+        <style-set media="screen" type="text">font-family:'Courier New'; font-size:9pt; color:#000000; </style-set>
+      </styleclass>
+      <styleclass name="Comment" parentclass="Normal" shortcut="49219">
+        <style-set media="screen" type="para">margin-top:24px; margin-right:60px; margin-bottom:7px; margin-left:60px; padding:6px; border-color:#000000; border-style:single; border-width:2px; </style-set>
+      </styleclass>
+      <styleclass name="Heading1" parentclass="Normal" shortcut="49201">
+        <style-set media="screen" type="para">text-align:right; margin-top:4px; margin-bottom:4px; </style-set>
+        <style-set media="screen" type="text">font-size:20pt; font-weight:bold; color:#000000; </style-set>
+      </styleclass>
+      <styleclass name="Image Caption" parentclass="Normal" shortcut="49225">
+        <style-set media="screen" type="para">text-align:left; margin-top:12px; margin-bottom:19px; </style-set>
+        <style-set media="screen" type="text">font-size:9pt; font-weight:bold; </style-set>
+      </styleclass>
+      <styleclass name="Style_Image" parentclass="Image Caption" shortcut="16471">
+        <style-set media="screen" type="para">text-align:center; margin-top:23px; margin-bottom:23px; </style-set>
+      </styleclass>
+      <styleclass name="Notes" parentclass="Normal" shortcut="0"/>
+      <styleclass name="Style_Header1" parentclass="Normal" shortcut="16433">
+        <style-set media="screen" type="para">text-align:center; margin-bottom:29px; </style-set>
+        <style-set media="screen" type="text">font-family:Arial; font-size:20pt; font-weight:bold; color:#000000; </style-set>
+      </styleclass>
+      <styleclass name="Style_Header2" parentclass="Style_Header1" shortcut="16434">
+        <style-set media="screen" type="text">font-size:20pt; </style-set>
+      </styleclass>
+      <styleclass name="Style_Header3" parentclass="Style_Header1" shortcut="16435">
+        <style-set media="screen" type="text">font-size:20pt; color:#000000; </style-set>
+      </styleclass>
+      <styleclass name="Style_Mark" parentclass="Normal" shortcut="16461">
+        <style-set media="screen" type="para">margin-top:2px; margin-right:5px; margin-left:29px; </style-set>
+        <style-set media="screen" type="text">font-family:Arial; font-size:10pt; </style-set>
+      </styleclass>
+      <styleclass name="Style_Mark2" parentclass="Style_Mark" shortcut="24653">
+        <style-set media="screen" type="para">margin-left:71px; </style-set>
+      </styleclass>
+      <styleclass name="Text_Style" parentclass="Normal" shortcut="16465">
+        <style-set media="screen" type="para">margin-top:5px; margin-bottom:5px; </style-set>
+        <style-set media="screen" type="text">font-family:Arial; font-size:10pt; </style-set>
+      </styleclass>
+      <styleclass name="Note_First" parentclass="Text_Style" shortcut="0">
+        <style-set media="screen" type="para">margin-left:61px; </style-set>
+        <style-set media="screen" type="text">font-weight:bold; color:#000000; </style-set>
+      </styleclass>
+      <styleclass name="Style_BOLD" parentclass="Text_Style" shortcut="16466">
+        <style-set media="screen" type="text">font-weight:bold; </style-set>
+      </styleclass>
+      <styleclass name="Style_ExamleHeader" parentclass="Text_Style" shortcut="0">
+        <style-set media="screen" type="text">font-weight:bold; text-decoration:underline; color:#333399; </style-set>
+      </styleclass>
+      <styleclass name="Style_Example" parentclass="Text_Style" shortcut="0">
+        <style-set media="screen" type="text">color:#333399; </style-set>
+      </styleclass>
+      <styleclass name="Style_Italic" parentclass="Text_Style" shortcut="16452">
+        <style-set media="screen" type="text">font-style:italic; </style-set>
+      </styleclass>
+      <styleclass name="Style_Link" parentclass="Text_Style" shortcut="0">
+        <style-set media="screen" type="para">margin-bottom:3px; </style-set>
+        <style-set media="screen" type="text">color:#333399; </style-set>
+      </styleclass>
+      <styleclass name="Style_Note" parentclass="Text_Style" shortcut="0">
+        <style-set media="screen" type="para">margin-right:19px; margin-left:58px; </style-set>
+        <style-set media="screen" type="text">font-style:italic; color:#000000; </style-set>
+      </styleclass>
+      <tablestyleclass name="Default">
+        <style-set media="screen">width:100%; cell-padding:0px; cell-spacing:0px; page-break-inside:auto; border-width:1px; border-spacing:0px; cell-border-width:0px; border-color:#999999; border-style:raised-color; background-color:none; head-row-background-color:#cccccc; alt-row-background-color:#fafafa; </style-set>
+      </tablestyleclass>
+    </styleclasses>
+    <config-group name="project">
+      <config-value name="title" translate="true">Enter the help project title here</config-value>
+      <config-value name="author" translate="true">Enter your company name</config-value>
+      <config-value name="copyright" translate="true">© &lt;%YEAR%&gt; &lt;%AUTHOR%&gt;</config-value>
+      <config-value name="versionmajor">1</config-value>
+      <config-value name="versionminor">0</config-value>
+      <config-value name="versionbuild">0</config-value>
+      <config-value name="lcid" translate="true">en-us</config-value>
+      <config-value name="charset" translate="true">ANSI_CHARSET</config-value>
+      <config-value name="deffont">font-family:'MS Sans Serif'; font-size:8pt; color:#000000;</config-value>
+      <config-value name="autohelpstart">0</config-value>
+      <config-value name="autohelpincrement">1</config-value>
+      <config-value name="autohelpanchor">0</config-value>
+      <config-value name="searchpath">.\</config-value>
+      <config-group name="custombuilds">
+        <config-value name="demo">Demo Build</config-value>
+        <config-value name="user1">User defined 1</config-value>
+        <config-value name="user2">User defined 2</config-value>
+        <config-value name="user3">User defined 3</config-value>
+      </config-group>
+      <config-value name="imageshortcuts_includebaggage">1</config-value>
+    </config-group>
+    <variables/>
+    <helpcontext-numbers/>
+  </config>
+  <xi:include parse="xml" href="Maps/table_of_contents.xml"/>
+  <project-files>
+    <file href="Topics/*.xml" build="ALL" filetype="topic"/>
+    <file href="Baggage/*.*" build="ALL" filetype="baggage"/>
+  </project-files>
+</helpproject>

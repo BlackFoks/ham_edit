@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="helpproject.xsl" ?>
+<topic template="Default" lasteditedby="tychkova" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="helpproject.xsd">
+  <title translate="true">ПО, размещаемое на терминальном сервере</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">ПО, размещаемое на терминальном сервере</text></para>
+    </header>
+    <list id="14" type="ol" listtype="decimal" formatstring="&#37;&#115;&#46;" format-charset="RUSSIAN_CHARSET" levelreset="false" legalstyle="false" startfrom="1" style="font-family:&apos;Times New Roman&apos;; font-size:11pt; color:#000000;">
+      <li><text styleclass="List Number" translate="true">Операционная система: Windows 2003 Server, со всеми необходимыми пакетами обновлений (критическими, актуальными).</text></li>
+      <li styleclass="List Number"><text styleclass="List Number" translate="true">Пакеты в составе операционной системы: Terminal Server.</text></li>
+      <li styleclass="List Number"><text styleclass="List Number" translate="true">ПО для соединения с БД: Oracle Client версии 10.2.0.4, Oracle Provider for OleDB версии 10.2.0.4.</text></li>
+      <li styleclass="List Number"><text styleclass="List Number" translate="true">Рабочее место Администратора «ЦФТ - Платформа развития&quot;» версии 6.32.06.</text></li>
+      <li styleclass="List Number"><text styleclass="List Number" translate="true">Клиентское место «ЦФТ – Навигатора» версии 6.10.016.</text></li>
+      <li styleclass="List Number"><text styleclass="List Number" translate="true">Клиентские приложения «ЦФТ – Платформа Развития»:</text></li>
+      <list id="14" level="1" type="ul" listtype="bullet" formatstring="&#183;" format-charset="SYMBOL_CHARSET" levelreset="true" legalstyle="false" startfrom="1" styleclass="List Number 2" style="font-family:Symbol; font-size:11pt; color:#000000;">
+        <li styleclass="List Number 2"><text styleclass="List Number 2" translate="true">АРМ «Навигатор» версия 6.0.104.02;</text></li>
+        <li styleclass="List Number 2"><text styleclass="List Number 2" translate="true">АРМ «Монитор коммуникационного канала» версия 6.0.82.1;</text></li>
+        <li styleclass="List Number 2"><text styleclass="List Number 2" translate="true">АРМ «Администратор доступа» версия 6.79.0.15;</text></li>
+        <li styleclass="List Number 2"><text styleclass="List Number 2" translate="true">АРМ «Администратор словаря данных» версия 6.330.0.15;</text></li>
+        <li styleclass="List Number 2"><text styleclass="List Number 2" translate="true">АРМ «Администратор проектов» версия 6.85.0.16.</text></li>
+      </list>
+    </list>
+    <list id="14" type="ol" listtype="decimal" formatstring="&#37;&#115;&#46;" format-charset="RUSSIAN_CHARSET" levelreset="false" legalstyle="false" startfrom="1" styleclass="List Number" style="font-family:&apos;Times New Roman&apos;; font-size:11pt; color:#000000;">
+      <li styleclass="List Number"><text styleclass="List Number" translate="true">ПО для работы отчетов: Oracle Reports Builder версии 6.0.8.26.0.</text></li>
+      <li styleclass="List Number"><text styleclass="List Number" translate="true">ПО «Сервер отчетов» версии 1.3.6.5 и выше.</text></li>
+      <li styleclass="List Number"><text styleclass="List Number" translate="true">Файловый менеджер FAR с установленным плагином ЦФТ IBSO (для задач сопровождения и администрирования).</text></li>
+    </list>
+  </body>
+</topic>

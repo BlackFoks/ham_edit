@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="tychkova" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">&lt;%TITLE%&gt;</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Центр Начислений</text></para>
+    </header>
+    <para styleclass="Style_Header2"><text styleclass="Style_Header2" translate="true">Введите название страницы</text></para>
+    <para styleclass="Normal"><text styleclass="Text_Style" translate="true">Введите здесь текст раздела.</text></para>
+  </body>
+</topic>

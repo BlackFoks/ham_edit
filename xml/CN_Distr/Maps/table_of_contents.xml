@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns:xsi="http://www.w3.org/2001/XInclude">
+  <topicref type="topic" id="407215425934655" build="ALL" modified="2011-06-27T15:28:21.414Z" icon="0" href="oН_aистрибутив__Состав_программного_обеспечения">
+    <caption translate="true">Оглавление</caption>
+  </topicref>
+  <topicref type="topic" id="407216799346218" build="ALL" modified="2011-06-27T15:27:16.225Z" icon="0" href="ПО_размещаемое_на_сервере_Бa">
+    <caption translate="true">ПО, размещаемое на сервере БД</caption>
+  </topicref>
+  <topicref type="topic" id="407215760986379" build="ALL" modified="2011-06-27T15:27:16.272Z" icon="0" href="ПО_размещаемое_на_клиентской_машине">
+    <caption translate="true">ПО, размещаемое на клиентской машине</caption>
+  </topicref>
+  <topicref type="topic" id="407214811456598" build="ALL" modified="2011-06-27T15:27:16.241Z" icon="0" href="ПО_размещаемое_на_терминалuном_сервере">
+    <caption translate="true">ПО, размещаемое на терминальном сервере</caption>
+  </topicref>
+</map>
