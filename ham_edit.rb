@@ -15,6 +15,7 @@ class TopicFile
     @doc || @doc = Nokogiri::XML(open(@filename))
   end
   
+  # moves header and creates new header/para
   def process_header!(header_node_text='ueNTP HA4UC/|EHUU')    
     # getting header text
     header_text = self.doc.xpath('//body/header/para').first.text
