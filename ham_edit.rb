@@ -31,9 +31,7 @@ class TopicFile
     end
   end
   
-  def process_header!(header_node_text='ueNTP HA4UC/|EHUU')
-    # header_node_text='ueNTP HA4UC/|EHUU'
-    
+  def process_header!(header_node_text='ueNTP HA4UC/|EHUU')    
     # getting header text
     header_text = self.body_header.text
     
@@ -68,10 +66,7 @@ class TopicFile
       para_header_node.add_child(para_header_text_node)
       
       # insert para_header immedeatly after <header> node
-      h.after(para_header_node)      
-      
-      puts doc.to_xml
-      # body_childs = self.doc.xpath('//body').first.children      
+      h.after(para_header_node)        
     end    
   end
   
@@ -111,22 +106,20 @@ def wputs(str='')
   puts str
 end
 
+# open topic file
 tf = TopicFile.new('D:\projects\ham_edit\xml\test.xml')
-#wputs tf.body_header.text.encode('cp866')
-#wputs tf.para_header.text.encode('cp866')
-#wputs tf.para_header['styleclass'].encode('cp866')
-#puts tf.para_header?
 
-#wputs "aaaaaaa" if tf.para_header?
+# moving header
+tf.process_header!('Центр Начислений')
 
-# tf.move_header!
-# tf.process_header!('Центр Начислений')
+# add style replacements
 tf.styles << { :old => 'List Number', :new => 'STYLE_001' }
 tf.styles << { :old => 'List Number 2', :new => 'STYLE_002' }
+
+# replace!
 tf.replace_styles!
 
+# save file
 File.open('D:\new_xml.xml', 'w') do |file|
   file.write(tf.doc.to_xml)
 end
-
-#puts tf.doc.to_xml
