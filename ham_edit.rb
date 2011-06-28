@@ -2,11 +2,13 @@
 require 'nokogiri'
 
 class TopicFile
-  attr_reader = :filename
+  attr_reader :filename
+  attr_accessor :styles
   
   def initialize(filename)
     @filename = filename
     @doc = nil
+    @styles = []
   end
   
   def doc
@@ -29,7 +31,6 @@ class TopicFile
     end
   end
   
-  # def move_header!(header_node_text='ueNTP HA4UC/|EHUU')
   def process_header!(header_node_text='ueNTP HA4UC/|EHUU')
     # header_node_text='ueNTP HA4UC/|EHUU'
     
@@ -73,6 +74,37 @@ class TopicFile
       # body_childs = self.doc.xpath('//body').first.children      
     end    
   end
+  
+  def replace_styles!
+    # get root nodes
+    # base_nodes = self.doc.xpath('//')
+    base_nodes = [self.doc.root]
+    
+    # for every root node...
+    base_nodes.each do |base_node|
+      # for every style replacement...
+      @styles.each do |style|
+        # replace style if exists
+        process_node(base_node, style[:old], style[:new])
+      end
+    end
+    
+  end
+  
+  def process_node(node, old_style, new_style)
+    if node
+      # if style matches -> replace
+      if node['styleclass'] == old_style
+        node['styleclass'] = new_style
+      end
+      
+      # if have children -> proceed they
+      if node.children && !node.children.empty?
+        node.children.each {|n| process_node(n, old_style, new_style) }
+      end
+    end
+  end
+  
 end
 
 def wputs(str='')
@@ -88,7 +120,10 @@ tf = TopicFile.new('D:\projects\ham_edit\xml\test.xml')
 #wputs "aaaaaaa" if tf.para_header?
 
 # tf.move_header!
-tf.process_header!('Центр Начислений')
+# tf.process_header!('Центр Начислений')
+tf.styles << { :old => 'List Number', :new => 'STYLE_001' }
+tf.styles << { :old => 'List Number 2', :new => 'STYLE_002' }
+tf.replace_styles!
 
 File.open('D:\new_xml.xml', 'w') do |file|
   file.write(tf.doc.to_xml)
