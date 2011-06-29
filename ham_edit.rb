@@ -21,44 +21,39 @@ class TopicFile
     header_text = self.doc.xpath('//body/header/para').first.text
     
     # create para header
-    # if !self.para_header?
-    #if !self.doc.xpath('//body/para').first
-      # getting header and paras
-      body_childs = self.doc.xpath('//body').first.children
-      
-      # getting header
-      h = body_childs.xpath('//header').first
-      
-      # getting header's para
-      h_para = h.xpath('//para').first
-      
-      # store page header text
-      h_para_content = h_para.content
-      
-      # replace header's para text
-      h_para.content = header_node_text
-      
-      # creating new para for header
-      para_header_node = Nokogiri::XML::Node.new('para', self.doc)
-      para_header_node['styleclass'] = 'Style_Header2'
+    body_childs = self.doc.xpath('//body').first.children
+    
+    # getting header
+    h = body_childs.xpath('//header').first
+    
+    # getting header's para
+    h_para = h.xpath('//para').first
+    
+    # store page header text
+    h_para_content = h_para.content
+    
+    # replace header's para text
+    h_para.content = header_node_text
+    
+    # creating new para for header
+    para_header_node = Nokogiri::XML::Node.new('para', self.doc)
+    para_header_node['styleclass'] = 'Style_Header2'
 
-      # creating para's text note with page header text 
-      para_header_text_node = Nokogiri::XML::Node.new('text', self.doc)
-      para_header_text_node['styleclass'] = 'Style_Header2'
-      para_header_text_node['translate'] = 'true'
-      para_header_text_node.content = h_para_content
-      
-      # add para's text into para node
-      para_header_node.add_child(para_header_text_node)
-      
-      # insert para_header immedeatly after <header> node
-      h.after(para_header_node)        
-    #end    
+    # creating para's text note with page header text 
+    para_header_text_node = Nokogiri::XML::Node.new('text', self.doc)
+    para_header_text_node['styleclass'] = 'Style_Header2'
+    para_header_text_node['translate'] = 'true'
+    para_header_text_node.content = h_para_content
+    
+    # add para's text into para node
+    para_header_node.add_child(para_header_text_node)
+    
+    # insert para_header immedeatly after <header> node
+    h.after(para_header_node)           
   end
   
   def replace_styles!
     # get root nodes
-    # base_nodes = self.doc.xpath('//')
     base_nodes = [self.doc.root]
     
     # for every root node...
@@ -68,8 +63,7 @@ class TopicFile
         # replace style if exists
         process_node(base_node, style[:old], style[:new])
       end
-    end
-    
+    end    
   end
   
   def process_node(node, old_style, new_style)
@@ -164,7 +158,6 @@ if ARGV.empty? || ARGV.count < 2
   exit
 end
 
-# fp = FileProcessor.new('D:\projects\ham_edit\xml\CN')
 fp = FileProcessor.new(ARGV[-1])
 
 s, h = false, false
