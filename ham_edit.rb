@@ -93,7 +93,7 @@ class FileProcessor
     @is_batch = is_batch
   end
   
-  def files
+  def process!
     folders = []
     
     if @is_batch
@@ -107,8 +107,9 @@ class FileProcessor
     xmls = Dir.glob('*.xml')
     
     i = 1
+    wputs "\nОбработка файлов...\n\n"
     xmls.each do |xml_filename|
-      puts xml_filename.encode('cp866')
+      wputs "#{i}: #{xml_filename}"
       
       tf = TopicFile.new(xml_filename)
       tf.process_header!('Центр Начислений')
@@ -124,28 +125,23 @@ class FileProcessor
       
       tf.replace_styles!
       
-      #Dir.mkdir('_new') #if !Dir.directory?('_new')
-      File.open("#{i}.xml", 'w') do |file|
-        file.write(tf.doc.to_xml)
-      end
+      Dir.mkdir('_new') if !Dir.exists?('_new')
       
+      File.open("_new/#{i}.xml", 'w') do |file|
+        file.write(tf.doc.to_xml)
+        wputs "    => #{i}.xml"
+      end     
       i += 1      
-    end
-    
-    
-  end
-  
-  def process
-    
-    
-    
-  end
-  
-  
+    end  
+
+    # xmls.each do |xml_filename|
+      # File.delete(xml_filename) 
+    # end    
+  end  
 end
 
 def wputs(str='')
-  puts str
+  puts str.encode('cp866')
 end
 
 # open topic file
@@ -177,4 +173,4 @@ end
 # end
 
 fp = FileProcessor.new('D:\projects\ham_edit\xml\CN')
-fp.files
+fp.process!
