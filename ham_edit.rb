@@ -93,7 +93,12 @@ class FileProcessor
     @is_batch = is_batch
   end
   
-  def process!
+  def process!(h=false, s=false)
+    if !h && !s
+      puts "Обрабатывать нечего..."
+      return
+    end
+  
     folders = []
     
     if @is_batch
@@ -112,18 +117,25 @@ class FileProcessor
       wputs "#{i}: #{xml_filename}"
       
       tf = TopicFile.new(xml_filename)
-      tf.process_header!('Центр Начислений')
       
-      tf.styles << { :old => 'Body Text Indent',  :new => 'Text_Style' }
-      tf.styles << { :old => 'List Bullet',       :new => 'Style_Mark' }
-      tf.styles << { :old => 'List Bullet+',      :new => 'Style_BOLD' }
-      tf.styles << { :old => 'Hyperlink',         :new => 'Style_Link' }
-      tf.styles << { :old => 'Примечание',        :new => 'Note_First' }
-      tf.styles << { :old => 'annotation text',   :new => 'Style_Note' }
-      tf.styles << { :old => 'Body Text Indent+', :new => 'Style_Image' }
-      tf.styles << { :old => 'Код',               :new => 'Style_Example' }
+      if h
+        tf.process_header!('Центр Начислений')
+        wputs "    Заголовок перемещен"
+      end
       
-      tf.replace_styles!
+      if s
+        tf.styles << { :old => 'Body Text Indent',  :new => 'Text_Style' }
+        tf.styles << { :old => 'List Bullet',       :new => 'Style_Mark' }
+        tf.styles << { :old => 'List Bullet+',      :new => 'Style_BOLD' }
+        tf.styles << { :old => 'Hyperlink',         :new => 'Style_Link' }
+        tf.styles << { :old => 'Примечание',        :new => 'Note_First' }
+        tf.styles << { :old => 'annotation text',   :new => 'Style_Note' }
+        tf.styles << { :old => 'Body Text Indent+', :new => 'Style_Image' }
+        tf.styles << { :old => 'Код',               :new => 'Style_Example' }
+        
+        tf.replace_styles!
+        wputs "    Стили заменены"
+      end
       
       Dir.mkdir('_new') if !Dir.exists?('_new')
       
@@ -132,11 +144,7 @@ class FileProcessor
         wputs "    => #{i}.xml"
       end     
       i += 1      
-    end  
-
-    # xmls.each do |xml_filename|
-      # File.delete(xml_filename) 
-    # end    
+    end     
   end  
 end
 
@@ -144,33 +152,37 @@ def wputs(str='')
   puts str.encode('cp866')
 end
 
-# open topic file
-# tf = TopicFile.new('D:\projects\ham_edit\xml\test1.xml')
+if ARGV.empty? || ARGV.count < 2
+  wputs "Конвертер отчетов, заменяет стили и перемещает заголовки.\n\n"
+  wputs "Способ использования: ruby ham_edit.rb [опции] [путь до распакованной папки]"
+  wputs "  Примечание: распакованная папка должна содержать папку Topics."
+  wputs ""
+  wputs "Возможные опции:"
+  wputs "    -s - замена стилей"
+  wputs "    -h - перемещение заголовков"
+  wputs "    -sh - замена стилей и перемещение заголовков\n"
+  exit
+end
 
-# moving header
-# tf.process_header!('Центр Начислений')
+# fp = FileProcessor.new('D:\projects\ham_edit\xml\CN')
+fp = FileProcessor.new(ARGV[-1])
 
-# add style replacements
-#tf.styles << { :old => 'List Number', :new => 'STYLE_001' }
-#tf.styles << { :old => 'List Number 2', :new => 'STYLE_002' }
-#tf.styles << { :old => 'Normal', :new => 'BUGAGA' }
+s, h = false, false
 
-# tf.styles << { :old => 'Body Text Indent',  :new => 'Text_Style' }
-# tf.styles << { :old => 'List Bullet',       :new => 'Style_Mark' }
-# tf.styles << { :old => 'List Bullet+',      :new => 'Style_BOLD' }
-# tf.styles << { :old => 'Hyperlink',         :new => 'Style_Link' }
-# tf.styles << { :old => 'Примечание',        :new => 'Note_First' }
-# tf.styles << { :old => 'annotation text',   :new => 'Style_Note' }
-# tf.styles << { :old => 'Body Text Indent+', :new => 'Style_Image' }
-# tf.styles << { :old => 'Код',               :new => 'Style_Example' }
+ARGV.each do |arg|
+  puts arg
+  if arg == '-h'
+    h = true
+  end
+  
+  if arg == '-s'
+    s = true
+  end
+  
+  if arg == '-sh' || arg == '-hs'
+    s = true
+    h = true
+  end
+end
 
-# replace!
-# tf.replace_styles!
-
-# save file
-# File.open('D:\new_xml.xml', 'w') do |file|
-  # file.write(tf.doc.to_xml)
-# end
-
-fp = FileProcessor.new('D:\projects\ham_edit\xml\CN')
-fp.process!
+fp.process!(h, s)
