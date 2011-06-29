@@ -105,6 +105,8 @@ class FileProcessor
     
     xmls = Dir.glob('*.xml')
     
+    @renames = []
+    
     i = 1
     wputs "\nОбработка файлов...\n\n"
     xmls.each do |xml_filename|
@@ -136,10 +138,53 @@ class FileProcessor
       File.open("_new/#{i}.xml", 'w') do |file|
         file.write(tf.doc.to_xml)
         wputs "    => #{i}.xml"
+        
+        @renames << { :old => xml_filename.split('.')[0], :new => i.to_s}
+        
+        #@renames[xml_filename.split('.')[0]] = i.to_s
       end     
       i += 1      
     end     
-  end  
+    
+    Dir.chdir('..')
+    # rename topic is in table of content
+    toc = Nokogiri::XML(open('Maps/table_of_contents.xml'))
+    
+    # get root nodes
+    base_nodes = [toc.root]
+    
+    # for every root node...
+    base_nodes.each do |base_node|
+      # for every style replacement...
+      @renames.each do |rename|
+        puts rename.inspect
+        # replace style if exists
+        process_toc(base_node, rename[:old], rename[:new])
+      end
+    end 
+    
+    # refs = toc.xpath('//topicref')
+    # refs.each do |ref|
+      # process_toc(ref)
+    # end
+    
+    puts toc.to_xml
+    
+  end
+
+  def process_toc(node, old_href, new_href)
+    if node
+      # if style matches -> replace
+      if node['href'] == old_href
+        node['href'] = new_href
+      end
+      
+      # if have children -> proceed they
+      if node.children && !node.children.empty?
+        node.children.each {|n| process_toc(n, old_href, new_href) }
+      end
+    end
+  end
 end
 
 def wputs(str='')
