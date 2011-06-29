@@ -191,7 +191,11 @@ class FileProcessor
 end
 
 def wputs(str='')
-  puts str.encode('cp866')
+  begin
+    puts str.encode('cp866')
+  rescue
+    puts str
+  end
 end
 
 if ARGV.empty? || ARGV.count < 2
