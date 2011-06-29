@@ -168,7 +168,10 @@ class FileProcessor
       # process_toc(ref)
     # end
     
-    puts toc.to_xml
+    # puts toc.to_xml
+    File.open('Maps/table_of_contents_11111.xml', 'w') do |toc_file|
+      toc_file.write(toc.to_xml)
+    end
     
   end
 
